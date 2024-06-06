@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: symfony
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: symfony
+        tier: frontend
+    spec:
+      containers:
+        - name: nginx
+          imagePullPolicy: {{ .Values.nginx.image.pullPolicy }}
+          image: {{ .Values.nginx.image.image }}
+          ports:
+            - containerPort: 80

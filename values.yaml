@@ -1,0 +1,11 @@
+nginx:
+  image:
+    pullPolicy: IfNotPresent
+    image: "techsolstice/nginx:3"
+  service:
+    type: LoadBalancer
+    port: 80
+php:
+  image:
+    pullPolicy: IfNotPresent
+    image: "techsolstice/php:3"
